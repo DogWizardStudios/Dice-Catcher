@@ -5,6 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://blyct8njqh1iw" path="res://scenes/dice/Dice.tscn" id="2_7h61r"]
 [ext_resource type="AudioStream" uid="uid://cwpkcmoeuh3ie" path="res://assets/tetris.mp3" id="4_kelw5"]
 [ext_resource type="PackedScene" uid="uid://cfygxy6t3k17t" path="res://scenes/fox/Fox.tscn" id="5_lfrn8"]
+[ext_resource type="FontFile" uid="uid://bpccahjr4tvqq" path="res://assets/TitanOne-Regular.ttf" id="6_5i0tg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0gddg"]
+font = ExtResource("6_5i0tg")
+font_size = 48
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 0.6313726)
+shadow_offset = Vector2(3, 2)
 
 [node name="Game" type="Node" unique_id=306359351]
 script = ExtResource("1_0sr1o")
@@ -27,4 +37,13 @@ parameters/looping = true
 [node name="Fox" parent="." unique_id=414342287 instance=ExtResource("5_lfrn8")]
 position = Vector2(630, 574)
 
+[node name="ScoreLabel" type="Label" parent="." unique_id=1873221312]
+offset_left = 28.0
+offset_top = 19.0
+offset_right = 167.0
+offset_bottom = 75.0
+text = "0000"
+label_settings = SubResource("LabelSettings_0gddg")
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="eaten_dice" from="Fox" to="." method="_on_fox_eaten_dice"]

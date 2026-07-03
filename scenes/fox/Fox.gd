@@ -1,6 +1,7 @@
 class_name Fox
-
 extends Area2D
+
+signal eaten_dice()
 
 @export var speed: float = 400.0
 
@@ -28,3 +29,4 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is Dice:
 		area.queue_free()
 		munch_sound.play()
+		eaten_dice.emit()

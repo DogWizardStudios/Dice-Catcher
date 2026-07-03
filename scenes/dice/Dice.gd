@@ -9,6 +9,7 @@ const BUFFER: float = 60.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 var _rotation_speed: float = ROTATION_SPEED
+var _score: int = 0
 
 func _ready() -> void:
 	if randf() < 0.5: _rotation_speed *= -1
