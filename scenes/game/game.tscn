@@ -1,11 +1,30 @@
 [gd_scene format=3 uid="uid://c6fyoodiunts5"]
 
+[ext_resource type="Script" uid="uid://b67ro0xbhokqp" path="res://scenes/game/Game.gd" id="1_0sr1o"]
 [ext_resource type="Texture2D" uid="uid://hjt2a50it2vy" path="res://assets/GemBg.png" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://blyct8njqh1iw" path="res://scenes/dice/Dice.tscn" id="2_7h61r"]
+[ext_resource type="AudioStream" uid="uid://cwpkcmoeuh3ie" path="res://assets/tetris.mp3" id="4_kelw5"]
+[ext_resource type="PackedScene" uid="uid://cfygxy6t3k17t" path="res://scenes/fox/Fox.tscn" id="5_lfrn8"]
 
 [node name="Game" type="Node" unique_id=306359351]
+script = ExtResource("1_0sr1o")
+dice_scene = ExtResource("2_7h61r")
 
 [node name="GemBg" type="Sprite2D" parent="." unique_id=1532245704]
 position = Vector2(2, -1.0000019)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_sul5r")
 centered = false
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1612531696]
+autostart = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="." unique_id=1798919416]
+stream = ExtResource("4_kelw5")
+autoplay = true
+parameters/looping = true
+
+[node name="Fox" parent="." unique_id=414342287 instance=ExtResource("5_lfrn8")]
+position = Vector2(630, 574)
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
