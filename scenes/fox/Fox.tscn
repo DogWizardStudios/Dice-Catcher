@@ -19,6 +19,6 @@ shape = SubResource("RectangleShape2D_0gddg")
 
 [node name="MunchSound" type="AudioStreamPlayer2D" parent="." unique_id=1930869521]
 stream = ExtResource("3_5ha1g")
-volume_db = -5.0
+volume_db = -20.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
