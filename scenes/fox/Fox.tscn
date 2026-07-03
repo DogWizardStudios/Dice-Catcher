@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://du6dd33gs71ek" path="res://scenes/fox/Fox.gd" id="1_2r0bn"]
 [ext_resource type="Texture2D" uid="uid://c521h60u1k7mt" path="res://assets/Fox.png" id="1_7xvop"]
+[ext_resource type="AudioStream" uid="uid://c2yrri0xe238e" path="res://assets/eating.wav" id="3_5ha1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gddg"]
-size = Vector2(118, 14)
+size = Vector2(93, 7)
 
 [node name="Fox" type="Area2D" unique_id=414342287]
 script = ExtResource("1_2r0bn")
@@ -13,5 +14,11 @@ script = ExtResource("1_2r0bn")
 texture = ExtResource("1_7xvop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1147216184]
-position = Vector2(3, -3)
+position = Vector2(-9.5, 21)
 shape = SubResource("RectangleShape2D_0gddg")
+
+[node name="MunchSound" type="AudioStreamPlayer2D" parent="." unique_id=1930869521]
+stream = ExtResource("3_5ha1g")
+volume_db = -5.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
