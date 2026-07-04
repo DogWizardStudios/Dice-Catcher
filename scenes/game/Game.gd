@@ -8,6 +8,7 @@ const GAME_OVER = preload("uid://eii2vgkwahql")
 @onready var score_label: Label = $ScoreLabel
 @onready var sound: AudioStreamPlayer = $Sound
 @onready var pausable: Node = $Pausable
+@onready var game_over_label: Label = $GameOverLabel
 
 var _score: int = 0
 
@@ -31,6 +32,7 @@ func game_over() -> void:
 	sound.stream = GAME_OVER
 	sound.volume_db = -20.0
 	sound.play()
+	game_over_label.show()
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_dice()

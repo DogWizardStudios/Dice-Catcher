@@ -6,8 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://cwpkcmoeuh3ie" path="res://assets/tetris.mp3" id="4_kelw5"]
 [ext_resource type="PackedScene" uid="uid://cfygxy6t3k17t" path="res://scenes/fox/Fox.tscn" id="5_lfrn8"]
 [ext_resource type="FontFile" uid="uid://bpccahjr4tvqq" path="res://assets/TitanOne-Regular.ttf" id="6_5i0tg"]
+[ext_resource type="LabelSettings" uid="uid://bekpyf0lmo7du" path="res://resources/title_label.tres" id="6_bdhmt"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_0gddg"]
+[sub_resource type="LabelSettings" id="LabelSettings_87uf6"]
 font = ExtResource("6_5i0tg")
 font_size = 48
 outline_size = 6
@@ -42,7 +43,23 @@ offset_top = 19.0
 offset_right = 167.0
 offset_bottom = 75.0
 text = "0000"
-label_settings = SubResource("LabelSettings_0gddg")
+label_settings = SubResource("LabelSettings_87uf6")
+
+[node name="GameOverLabel" type="Label" parent="." unique_id=1732209606]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.5
+offset_top = -28.0
+offset_right = 141.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = ExtResource("6_bdhmt")
 
 [node name="Pausable" type="Node" parent="." unique_id=955083545]
 process_mode = 1
