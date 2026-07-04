@@ -1,18 +1,36 @@
 extends Node
 
+const GAME_OVER = preload("uid://eii2vgkwahql")
+
 @export var dice_scene: PackedScene
+
+
 @onready var score_label: Label = $ScoreLabel
+@onready var sound: AudioStreamPlayer = $Sound
+@onready var pausable: Node = $Pausable
 
 var _score: int = 0
 
-# Called when the node enters the scene tree for the first time.
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("reload"):
+		get_tree().reload_current_scene()
+
+
 func _ready() -> void:
-	spawn_dice()
+	get_tree().paused = false
 
 func spawn_dice() -> void:
 	var new_dice: Dice = dice_scene.instantiate()
-	add_child(new_dice)
+	new_dice.off_screen.connect(game_over)
+	pausable.add_child(new_dice)
 
+
+func game_over() -> void:
+	sound.stop()
+	sound.stream = GAME_OVER
+	sound.volume_db = -20.0
+	sound.play()
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_dice()
